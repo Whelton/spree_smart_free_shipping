@@ -16,9 +16,11 @@ module Spree
 
         def perform(payload = {})
           order = payload[:order]
+          promotion_code = payload[:promotion_code]
+
           return if promotion_adjustment_exists?(order) || !self.eligible?(order)
 
-          result = create_adjustment(order, order)
+          result = create_adjustment(order, order, promotion_code)
 
           return result
         end
@@ -33,12 +35,13 @@ module Spree
 
       private
 
-        def create_adjustment(adjustable, order)
+        def create_adjustment(adjustable, order, promotion_code)
           self.adjustments.create!(
             amount: 0.0,
             order: order,
             adjustable: order,
-            label: "#{Spree.t(:promotion)} (#{promotion.name})"
+            label: "#{Spree.t(:promotion)} (#{promotion.name})",
+            promotion_code: promotion_code
           )
          true
         end
@@ -55,4 +58,3 @@ module Spree
      end
    end
  end
-

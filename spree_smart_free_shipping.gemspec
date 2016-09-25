@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_smart_free_shipping'
-  s.version     = '2.4.7.beta'
+  s.version     = '1.0.0'
   s.summary     = 'A better way to offer free shipping'
   s.description = 'Free shipping for selected shipping methods'
   s.required_ruby_version = '>= 1.9.3'
@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency 'spree_core', '~> 2.4.7.beta'
+  s.add_dependency 'solidus_core', [">= 1.0.0.pre", "< 2"]
 
   s.add_development_dependency 'capybara', '~> 2.4'
   s.add_development_dependency 'coffee-rails'
